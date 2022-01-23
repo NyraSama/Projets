@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/src/Logo.jpg" />
+    <title>ShiFuMi</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: #3d3d3d;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+            font-family: 'Comic Sans MS';
+        }
+        h1{
+            margin: 0;
+            padding: 0;
+            font-size: 42pt;
+            font-family: 'Comic Sans MS';
+        }
+        #scoreBoard{
+            font-size: 30pt;
+        }
+        #buttons{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            width: 5rem;
+            height: 5rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            border: none;
+            outline: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 12pt;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            cursor: pointer;
+        }
+        #Pierre{
+            background-image: url(./assets/src/Pierre.png);
+        }
+        #Feuille{
+            background-image: url(./assets/src/Feuille.png);
+        }
+        #Ciseaux{
+            background-image: url(./assets/src/Ciseaux.png);
+        }
+        #Lézard{
+            background-image: url(./assets/src/Lézard.png);
+        }
+        #Spoke{
+            background-image: url(./assets/src/Spoke.png);
+        }
+    </style>
+    <h1>ShiFuMi</h1>
+    <p id='scoreBoard'>0 | 0</p>
+    <div id="buttons">
+        <button id="Pierre" onclick="roundStart('Pierre')"></button>
+        <button id="Feuille" onclick="roundStart('Feuille')"></button>
+        <button id="Ciseaux" onclick="roundStart('Ciseaux')"></button>
+        <button id="Lézard" onclick="roundStart('Lézard')"></button>
+        <button id="Spoke" onclick="roundStart('Spoke')"></button>
+    </div>
+    <p id='playerChoice'></p>
+    <p id='computerChoice'></p>
+    <p id='victoryRender'></p>
+
+    <script>
+        let scoreBoardPrinter = document.getElementById('scoreBoard');
+        let pierreButton = document.getElementById('Pierre');
+        let feuilleButton = document.getElementById('Feuille');
+        let ciseauxButton = document.getElementById('Ciseaux');
+        let lezardButton = document.getElementById('Lézard');
+        let spokeButton = document.getElementById('Spoke');
+        let playerChoicePrinter = document.getElementById('playerChoice');
+        let computerChoicePrinter = document.getElementById('computerChoice');
+        let victoryRenderPrinter = document.getElementById('victoryRender');
+        let choicePossibility = new Array('Pierre', 'Feuille', 'Ciseaux', 'Lézard', 'Spoke')
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function roundStart(choice){
+            let playerChoice = choice;
+            let computerChoice = choicePossibility[Math.floor(Math.random() * 5)]
+            playerChoicePrinter.innerHTML = 'Tu joues : ' + playerChoice;
+            computerChoicePrinter.innerHTML = 'Je joue : ' + computerChoice;
+
+            if (isWinned(playerChoice, computerChoice)){
+                victoryRenderPrinter.innerHTML = 'Victoire pour toi !';
+                playerScore++
+            } else if (isWinned(computerChoice, playerChoice)) {
+                victoryRenderPrinter.innerHTML = 'Victoire pour moi !';
+                computerScore++
+            } else {
+                victoryRenderPrinter.innerHTML = 'Egalité !';
+            }
+            scoreBoardPrinter.innerHTML = playerScore + ' | ' + computerScore;
+        }
+
+        function isWinned(playerChoice, computerChoice){
+            switch(playerChoice){
+                case 'Pierre' : {
+                    return computerChoice == 'Ciseaux' || computerChoice == 'Lézard';
+                }
+                case 'Feuille' : {
+                    return computerChoice == 'Spoke' || computerChoice == 'Pierre';
+                }
+                case 'Ciseaux' : {
+                    return computerChoice == 'Lézard' || computerChoice == 'Feuille';
+                }
+                case 'Lézard' : {
+                    return computerChoice == 'Spoke' || computerChoice == 'Feuille';
+                }
+                case 'Spoke' : {
+                    return computerChoice == 'Ciseaux' || computerChoice == 'Pierre';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
