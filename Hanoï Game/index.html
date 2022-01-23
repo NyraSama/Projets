@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanoï Game</title>
+    <link href="./reset.css" rel="stylesheet">
+    <link rel="stylesheet" href="./game_style.css">
+</head>
+<body>
+    <div id="Title">HANOÏ GAME</div>
+    <form class="startForm">
+        <div class="startFormElt">
+            <label for="Pseudo">Nom:</label>
+            <input type="text" id="Pseudo" autofocus name="Pseudo" placeholder="Ex: Ryan" required minlength="4" maxlength="8" size="10">
+        </div>
+        <div class="startFormElt Leveldiv">
+            <label for="Level">Niveau:</label>
+            <input type="range" id="Level" title="4" oninput="document.getElementById('Level').title=document.getElementById('Level').value;" value="4" required min="2" max="10">
+        </div>
+        <input class="startButton startFormElt" onclick="Start()" type="Button" value="Play to the Game">
+    </form>
+    <div id="endText" class="noreveal">
+        <div id="endTitle">Game Over</div>
+        <div id="endCounterContent">You made <span id="endCounter"></span> moves</div>
+        <a href="./index.html"><input id="endButton" type="button" value="Restart"></a>
+    </div>
+    <div id="gameArea" class="noreveal">
+        <div id="firstTower" class="tower"></div>
+        <div id="secondTower" class="tower"></div>
+        <div id="thirdTower" class="tower"></div>
+    </div>
+    <script type="text/javascript" src="./game.js"></script>
+</body>
+</html>
