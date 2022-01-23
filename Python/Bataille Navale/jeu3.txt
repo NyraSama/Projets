@@ -1,0 +1,6 @@
+5 : 5
+Queen-Anne's-revenge : 3
+Hollandais-volant : 2
+Black-Pearl : 2   
+Silent-Mary : 2
+Chaloupe : 1

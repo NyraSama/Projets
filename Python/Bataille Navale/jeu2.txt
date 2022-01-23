@@ -1,0 +1,3 @@
+4 : 3
+grand : 2
+petit : 1

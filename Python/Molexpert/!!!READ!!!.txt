@@ -1,0 +1,6 @@
+In order to launch the Molexpert program,
+
+you need to install the two executer in the file !!!Installation!!!
+and after you have to run Molexpert with VPython 2.7
+
+Enjoy !
