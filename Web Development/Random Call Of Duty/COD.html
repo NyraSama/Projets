@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Of Duty : Random</title>
+    <link rel="icon" href="./icon.png" type="image/icon type">
+</head>
+<body>
+    <div class="main">
+        <img src="https://bnetproduct-a.akamaihd.net//f80/4ae2b6b64bc085564a353da9292896fb-PV_WZ_PACIFIC_LOGO_PRIMARY_RGB_NEG.png" alt="current logo" class="logo">
+        <div class="menu">
+            <a onclick="switchMenu();" href="javascript:void(0)" class="arrowMenuLink"><img src="https://s2.qwant.com/thumbr/0x380/d/2/c9fe0a5f6b4d6b910927347cb9b178fdae13bb18ff74f817d7af7e32c3d5b3/Soeb-Plain-Arrows-8.png?u=https%3A%2F%2Fopenclipart.org%2Fimage%2F2400px%2Fsvg_to_png%2F26527%2FSoeb-Plain-Arrows-8.png&q=0&b=1&p=0&a=0" alt="arrowMenu"></a>
+            <div class="rules">
+                <div class="head">
+                    <div>
+                        <input type="checkbox" name="loadout" id="loadout">
+                        <label for="loadout"><img src="./loadout.png" alt="loadout icon"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="spawn" id="spawn" checked>
+                        <label for="spawn"><img src="./spawn.png" alt="spawn icon"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="objective" id="objective">
+                        <label for="objective"><img src="./objective.png" alt="objective icon"></label>
+                    </div>
+                </div>
+                <div class="foot">
+                    <a class="button" onclick="battleRoyal();" href="javascript:void(0)"> Battle Royal </a>
+                    <a class="button" onclick="rebirthIsland();" href="javascript:void(0)"> Rebirth Island </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            outline: none;
+            color: white;
+        }
+
+        body{
+            background-color: rgb(48, 48, 48);
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main{
+            background-image: url("https://bnetproduct-a.akamaihd.net//1e/8d5593be577f046036d14e2b3ba76731-WZS1-PCBnet-BackgroundDesktop-Textless-1600x680_FINAL.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            overflow: hidden;
+            }
+            .logo{
+                width: 18rem;
+                margin-right: 10rem;
+            }
+            .menu{
+                background-color: rgba(0, 0, 0, 0.685);
+                position: absolute;
+                bottom: 0;
+                height: 30%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(100%);
+                transition: transform 0.6s ease;
+                }
+                .arrowMenuLink{
+                    position: absolute;
+                    top: 0;
+                    left: calc(50% - 1.5rem);
+                    transform: translateY(-100%);
+                    }
+                    .arrowMenuLink img{
+                        width:3rem;
+                        transform: rotate(90deg);
+                    }
+                .rules{
+                    width: 100%;
+                    height: 100%;
+                    }
+                    .head{
+                        height: 60%;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        }
+                        .head div{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-flow: column-reverse;
+                            margin: 0 0.5rem 0 0.5rem; 
+                            }
+                            input{
+                                margin-top: 0.5rem;
+                            }
+                            label img{
+                                width: 3rem;
+                            }
+                    .foot{
+                        height: 40%;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        }
+                        .button{
+                            font-family: 'Impact', 'Rockwell', 'Trebuchet MS';
+                            font-size: 15pt;
+                            border: 1px solid white;
+                            border-radius: 0.5rem;
+                            background-color: white;
+                            color: black;
+                            padding: 0.5rem 1rem 0.5rem 1rem;
+                            margin: 0 0.5rem 0 0.5rem;
+                        }
+
+
+    </style>
+    <script>
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let menu = "close";
+        function switchMenu(){
+            if (menu == "open"){
+                document.getElementsByClassName("menu")[0].style.transform = "translateY(100%)";
+                menu = "close";
+            } else{
+                document.getElementsByClassName("menu")[0].style.transform = "translateY(0%)";
+                menu = "open";
+            }
+        }
+
+        let battleRoyalSpawn = ["Capital", "Lagoon", "Village", "Ruins", "Arsenal", "Fields", "Airfield", "Sub Pen", "Resort", "Runway", "Beachhead", "Peak", "Power Plant", "Docks", "Mines"];
+        let rebirthIslandSpawn = ["Security Area", "Control Center", "Prison", "Headquarters", "Living Quarters", "Nova 6 Factory", "Chemical Engine", "Decon Zone", "Bioweapon", "Harbor"];
+        let battleRoyalObjective = ["Scavenger", "Supply Run", "Bounty", "Recon", "Most Wanted", "Big Game Bounty", "Supply Drop"];
+
+        function battleRoyal(){
+            let order = "Okay soldier";
+            if (document.getElementById("loadout").checked){
+                let loadout = getRandomInt(1, 10);
+                order += ", take your load out number "+loadout;
+            }
+            if (document.getElementById("spawn").checked){
+                let spawn = battleRoyalSpawn[getRandomInt(0, battleRoyalSpawn.length - 1)];
+                order += ", you have to go in "+spawn;
+            }
+            if (document.getElementById("objective").checked){
+                let objective = battleRoyalObjective[getRandomInt(0, battleRoyalObjective.length - 1)];
+                order += ", reach the contract "+objective;
+            }
+            alert(order+" !");
+        }
+
+        function rebirthIsland(){
+            let order = "Okay soldier";
+            if (document.getElementById("loadout").checked){
+                let loadout = getRandomInt(1, 10);
+                order += ", take your load out number "+loadout;
+            }
+            if (document.getElementById("spawn").checked){
+                let spawn = rebirthIslandSpawn[getRandomInt(0, rebirthIslandSpawn.length - 1)];
+                order += ", you have to go in "+spawn;
+            }
+            if (document.getElementById("objective").checked){
+                let objective = battleRoyalObjective[getRandomInt(0, 4)];
+                order += ", reach the contract "+objective;
+            }
+            alert(order+" !");
+        }
+    </script>
+</body>
+</html>
